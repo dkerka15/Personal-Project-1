@@ -13,6 +13,10 @@
         <module>project-web</module>
     </modules>
 
+    <properties>
+        <java.version>23</java.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <!-- Define shared dependencies here if needed -->
@@ -28,23 +32,26 @@
                     <artifactId>frontend-maven-plugin</artifactId>
                     <version>1.12.0</version>
                     <executions>
+                        <!-- Give unique execution ids -->
                         <execution>
+                            <id>install-node-and-npm</id>  <!-- Unique ID for this execution -->
                             <goals>
                                 <goal>install-node-and-npm</goal>
                                 <goal>npm</goal>
                             </goals>
                             <configuration>
-                                <npmVersion>6.14.4</npmVersion> <!-- You can adjust the version of npm -->
-                                <nodeVersion>v14.15.1</nodeVersion> <!-- You can adjust the version of Node.js -->
-                                <arguments>install</arguments> <!-- Run `npm install` to install dependencies -->
+                                <npmVersion>6.14.4</npmVersion>
+                                <nodeVersion>v14.15.1</nodeVersion>
+                                <arguments>install</arguments> <!-- Run `npm install` -->
                             </configuration>
                         </execution>
                         <execution>
+                            <id>npm-run-build</id> <!-- Unique ID for this execution -->
                             <goals>
-                                <goal>npm</goal>
+                                <goal>npm-run-build</goal>
                             </goals>
                             <configuration>
-                                <arguments>run build</arguments> <!-- Run `npm run build` to build the React app -->
+                                <arguments>run build</arguments> <!-- Run `npm run build` -->
                             </configuration>
                         </execution>
                     </executions>
